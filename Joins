@@ -1,0 +1,21 @@
+create table author(author_id int primary key,author_name varchar(20));
+desc author;
+create table books(book_id int primary key,book_name varchar(20), author_book_id int ,foreign key(author_book_id) references author(author_id));
+insert into author values(5,'Kushwanth Singh');
+select * from author;
+insert into books values(5,'Geetanjali',4);
+select * from books;
+select author.author_name,books.book_name
+from author
+inner join books on author.author_id=books.author_book_id;
+select author.author_name,books.book_name
+from author
+left join books on author.author_id=books.author_book_id;
+set foreign_key_checks=0;
+insert into books values(5,"The Wings of Fire",6);
+select author.author_name,books.book_name
+from author
+right join books on author.author_id=books.author_book_id;
+select author.author_name,books.book_name
+from author
+cross join books;

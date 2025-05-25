@@ -1,0 +1,90 @@
+show databases;
+create database mtiet_db;
+drop database mtiet_db;
+create database nadiya_db;
+use nadiya_db;
+create table Students ( id int,name varchar(30),age int,department varchar(30));
+desc students;
+show tables;
+drop table students;
+drop database nadiya_db;
+show databases;
+create database info_db;
+use info_db;
+create table details(column_id int,name varchar(20),age int,location varchar(30));
+desc details;
+alter table details 
+add phonenumber int;
+desc details;
+rename table details to detailss;
+rename table detailss to details;
+desc details;
+alter table details
+modify name varchar(200);
+desc details;
+alter table details drop phonenumber;
+desc details;
+alter table details rename column name to names ;
+truncate table details;
+desc details;
+create table employees(
+emp_id int primary key,
+emp_name varchar(20),
+emp_salary int);
+insert into  employees(emp_id,emp_name,emp_salary) values(1,"john",50000);
+insert into  employees(emp_id,emp_name,emp_salary) values(2,"joy",20000);
+insert into  employees(emp_id,emp_name,emp_salary) values(3,"joisy",35000);
+select * from employees;
+drop table employees;
+create table employees(
+emp_id int primary key,
+emp_name varchar(20),
+emp_salary int);
+insert into  employees(emp_id,emp_name,emp_salary) values(1,"john",50000),(2,"jessy",35000),(3,"sunny",40000);
+select * from employees;
+insert into employees values(4,"pinku",39000);
+insert into employees (emp_id,emp_name) values(5,"srav");
+select * from employees;
+create table students(
+st_id int primary key,
+st_name varchar(20));
+insert into students values(1,"joy");
+select * from students;
+drop table students;
+create database information_db;
+drop database  information_db;
+desc employees;
+select * from employees;
+create table stu_details(
+id int primary key, name varchar(200),phone int,location varchar(200));
+insert into stu_details values (6,"Sweety",2690764,"Tirupathi");
+select * from stu_details;
+update stu_details
+set phone =986575 where id=2;
+select *from stu_details; 
+delete from stu_details where id=2;
+select id,name from stu_details ;
+select id ,name from stu_details where name ="Alice";
+select * from stu_details;
+select id,name,location from stu_details where name like "S%";
+create table author(author_id int primary key,author_name varchar(20));
+desc author;
+create table books(book_id int primary key,book_name varchar(20), author_book_id int ,foreign key(author_book_id) references author(author_id));
+insert into author values(5,'Kushwanth Singh');
+select * from author;
+insert into books values(5,'Geetanjali',4);
+select * from books;
+select author.author_name,books.book_name
+from author
+inner join books on author.author_id=books.author_book_id;
+select author.author_name,books.book_name
+from author
+left join books on author.author_id=books.author_book_id;
+set foreign_key_checks=0;
+insert into books values(5,"The Wings of Fire",6);
+select author.author_name,books.book_name
+from author
+right join books on author.author_id=books.author_book_id;
+select author.author_name,books.book_name
+from author
+cross join books;
